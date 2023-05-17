@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Understanding JavaScript's Capture</title>
+  <link rel="icon" href="https://fav.farm/✅" />
+</head>
+<body class="bod">
+
+  <div class="one">
+    <div class="two">
+      <div class="three">
+      </div>
+    </div>
+  </div>
+
+<style>
+  html {
+    box-sizing: border-box;
+  }
+
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+  div {
+    width: 100%;
+    padding: 100px;
+  }
+
+  .one {
+    background: thistle;
+  }
+
+  .two {
+    background: mistyrose;
+  }
+
+  .three {
+    background: coral;
+  }
+</style>
+
+<button></button>
+<script>
+    //when div is clicked, the CSS classes of the clicked element are logged to the console
+    //when button is clicked, the message "Click" is logged to the console  
+  const divs = document.querySelectorAll('div');
+  const button = document.querySelector('button');
+
+  function logText(e) {
+    console.log(this.classList.value);//classList returns a list of all the CSS classs of the element, and value returns the string of these classes
+    
+  }
+
+  divs.forEach(div => div.addEventListener('click', logText, {//forEach iterates over the elements of divs, which is a collection of all the divisions
+    capture: false,//event will be handled during bubbling face, not during capture face
+    once: true
+  }));
+  //In the capturing phase, the event is triggered on the outermost element and propagates through its ancestors down to the target element. During this phase, event handlers attached to parent elements are triggered first, moving closer to the target element.
+  //After the target phase, the event continues to propagate upwards through the DOM tree in the bubbling phase. During this phase, event handlers attached to parent elements are triggered, starting from the target element's immediate parent and moving up to the outermost element.
+  button.addEventListener('click', () => {
+    console.log('Click!!!');
+  }, {
+    once: true//event listener is only trigerred once and then automatically removed
+  });
+
+</script>
+</body>
+</html>
