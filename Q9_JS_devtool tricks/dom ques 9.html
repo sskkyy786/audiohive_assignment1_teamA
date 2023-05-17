@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Console Tricks!</title>
+  <link rel="icon" href="https://fav.farm/🔥" />
+</head>
+<body>
+
+  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+
+  <script>
+    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+
+    function makeGreen() {
+      const p = document.querySelector('p');
+      p.style.color = '#BADA55';
+      p.style.fontSize = '50px';
+    }
+
+    // Regular
+    console.log("hii , i m falak");
+
+    // Interpolated
+    console.log("hi , i am a %s" , "🚎");
+
+    // Styled
+    console.log("%c i m a lovely colour" , 'background-color:blue;color:red')
+
+    // warning!
+    console.warn('this is a warning');
+
+    // Error :|
+    console.error("here , an error occurred");
+
+    // Info
+    console.info("crocodiles eat 3-4 men in a year");  // info icon is not visible in console, why ?
+
+    // Testing
+    var i = 65 ;
+    let j = 11;
+    var k = 'A';
+    console.assert(i===j , "wrong");
+    console.assert(i==k, "wrong");  // why console giving wrong ans 
+    console.assert(i===k, "wrong"); 
+
+    // clearing
+   // console.clear();
+
+    // Viewing DOM Elements
+    /*console.log(p)
+    console.log('p');                          // this is not getting executed
+    console.log(script);*/
+
+    // Grouping together
+    dogs.forEach(function(dog) {
+      console.groupCollapsed(`${dog.name}`);
+      console.log(`This is ${dog.name}`);
+      console.log(`${dog.name} is ${dog.age} years old`);
+      console.log(`${dog.name} is ${dog.age * 7} dog years old`);
+      console.groupEnd(`${dog.name}`);
+    });
+
+    // counting
+     console.count('falak');
+     console.count('hmm');
+     console.count('falak');
+     console.count('falak');
+     console.count('falak');
+     console.count('hmm');
+     console.count('hmm');
+     console.count('falak');
+     console.count('hmm');
+     console.countReset("hmm")
+     console.count('falak');
+     console.count('hmm');
+     console.count('hmm');
+     console.count('falak');
+
+    // timing
+    console.time("myTimer");
+    {
+      var x = 10;
+      var y = 20;
+      var z = x+y;
+    }
+    console.timeEnd("myTimer");
+
+  </script>
+</body>
+</html>
